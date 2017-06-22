@@ -25,16 +25,9 @@ http.createServer( (req, res) => {
     }
   };
   
-  let path = {
-    ts:		'/data/',
-    m3u8:	'/data/',
-    
-  };
-      
   console.log('request to: ', file, ' - type: ', type, ' mime: ', mime[type].name, ' path: ', mime[ type ].path);
   
   res.setHeader( 'X-Accel-Redirect', mime[ type ].path + file );
-  //res.setHeader("Access-Control-Allow-Origin", "*");
   res.writeHead(200, { 'Content-Type': mime[ type ].name });
   res.end();
 }).listen( 2228 );
