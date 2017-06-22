@@ -27,13 +27,7 @@ module.exports = {
 				test:		/\.js$/,
 				exclude:	/node_modules/,
 				use: [
-					{
-						loader:		'babel-loader',
-						options:	{
-							presets:	[ [ 'es2015' ], [ 'es2017' ] ],
-							plugins:	[ 'transform-runtime', 'syntax-dynamic-import', 'transform-regenerator' ]
-						}
-					}
+					{ loader:		'babel-loader' }
 				]
 			},
 			{
@@ -64,6 +58,7 @@ module.exports = {
 		]
 	},
 	plugins:	[
+		new webpack.optimize.ModuleConcatenationPlugin(),
 		new webpack.optimize.CommonsChunkPlugin({ minChunks: 2, name: 'main', children: true, async: true }),
 		new webpack.DefinePlugin({
 			ENV_PROD: false,

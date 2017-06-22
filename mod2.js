@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 import { mediator } from 'barfoos2.0/mediator.js';
 
@@ -14,4 +14,4 @@ m.on( 'whatever', ( ...args ) => {
 setTimeout(() => {
 	console.log( 'mod2.js dispatch whatever: ' );
 	m.fire('whatever', 'MEDIATOR INSTANCE!!!');
-}, 2200)
+}, 2200);

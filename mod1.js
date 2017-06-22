@@ -1,3 +1,5 @@
+'use strict';
+
 import { Component, init } from 'barfoos2.0/core.js';
 import { mix, extend } from 'barfoos2.0/toolkit.js';
 import { win, doc } from 'barfoos2.0/domkit.js';
@@ -38,7 +40,7 @@ class Module1 extends Component {
 
 async function main() {
 	const inst = await init( Module1 );
-	console.log('inst is: ', inst);
+	console.log('instance is: ', inst);
 }
 
 export { main };

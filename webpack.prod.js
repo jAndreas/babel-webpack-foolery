@@ -33,13 +33,7 @@ module.exports = {
 				test:		/\.js$/,
 				exclude:	/node_modules/,
 				use: [
-					{
-						loader:		'babel-loader',
-						options:	{
-							presets:	[ [ 'es2015' ], [ 'es2017' ] ],
-							plugins:	[ 'transform-runtime', 'syntax-dynamic-import', 'transform-regenerator' ]
-						}
-					}
+					{ loader:		'babel-loader' }
 				]
 			},
 			{
@@ -57,7 +51,8 @@ module.exports = {
 			{
 				test:		/\.htmlx$/,
 				use: [
-					{ loader: 'template-string-loader' }
+					{ loader:	'babel-loader' },
+					{ loader:	'template-string-loader' }
 				]
 			},
 			{
@@ -69,8 +64,9 @@ module.exports = {
 		]
 	},
 	plugins:	[
-		new webpack.optimize.CommonsChunkPlugin({ minChunks: 2, name: 'main', children: true, async: true }),
+		new webpack.optimize.ModuleConcatenationPlugin(),
 		new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+		new webpack.optimize.CommonsChunkPlugin({ minChunks: 2, name: 'main', children: true, async: true }),
 		//new UglifyJSPlugin(),
 		new webpack.DefinePlugin({
 			ENV_PROD: true, 
