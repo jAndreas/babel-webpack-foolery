@@ -1,4 +1,0 @@
-<div id="outer">
-	<span class="YES" bid="theImportantElement">YES ${scope.test} SIR!</span>
-</div>
-<div id="second">second guy!</div>

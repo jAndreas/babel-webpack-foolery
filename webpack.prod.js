@@ -4,10 +4,10 @@ const	webpack		= require( 'webpack' ),
 		//UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 console.log( '\nRemoving old files in target directory:\n' );
-fs.readdirSync( '/var/www/html/playground/' ).forEach(( file ) => {
+fs.readdirSync( '/var/www/html/judgemy.org/' ).forEach(( file ) => {
 	if( /\.js$|\.map$/.test( file ) ) {
 		console.log( 'removing ', file );
-		fs.unlink('/var/www/html/playground/' + file, () => {});
+		fs.unlink('/var/www/html/judgemy.org/' + file, () => {});
 	}
 });
 console.log( '\nDone.\n' );
@@ -16,7 +16,7 @@ module.exports = {
 	context:	__dirname,
 	entry:		[ './app.js' ],
 	output:		{
-		path:		'/var/www/html/playground/',
+		path:		'/var/www/html/judgemy.org/',
 		filename:	'[name]-bundle.js'
 	},
 	module:	{
@@ -26,7 +26,7 @@ module.exports = {
 				enforce:	'pre',
 				exclude:	/node_modules/,
 				use: [
-					{ loader: 'eslint-loader' }
+					{ loader:		'eslint-loader' }
 				]
 			},
 			{
@@ -39,26 +39,26 @@ module.exports = {
 			{
 				test:		/\.css$/,
 				use: [
-					{ loader: 'style-loader/useable' },
-					{ loader: 'css-loader' }
+					{ loader:		'style-loader/useable' },
+					{ loader:		'css-loader' }
 				]
 			},
 			{
 				test:		/\.html$/,
 				use: [
-					{ loader: 'raw-loader' } ]
+					{ loader:		'raw-loader' } ]
 			},
 			{
 				test:		/\.htmlx$/,
 				use: [
-					{ loader:	'babel-loader' },
-					{ loader:	'template-string-loader' }
+					{ loader:		'babel-loader' },
+					{ loader: 		'template-string-loader' }
 				]
 			},
 			{
 				test:		/\.jpg$|.png$/,
 				use: [
-					{ loader: 'url-loader' }
+					{ loader:		'url-loader' }
 				]
 			}
 		]
@@ -67,9 +67,8 @@ module.exports = {
 		new webpack.optimize.ModuleConcatenationPlugin(),
 		new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
 		new webpack.optimize.CommonsChunkPlugin({ minChunks: 2, name: 'main', children: true, async: true }),
-		//new UglifyJSPlugin(),
 		new webpack.DefinePlugin({
-			ENV_PROD: true, 
+			ENV_PROD: true,
 		})
 	]
 };

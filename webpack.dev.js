@@ -3,10 +3,10 @@ const	webpack		= require( 'webpack' ),
 		fs			= require( 'fs' );
 
 console.log( '\nRemoving old files in target directory:\n' );
-fs.readdirSync( '/var/www/html/playground/' ).forEach(( file ) => {
+fs.readdirSync( '/var/www/html/judgemy.org/' ).forEach(( file ) => {
 	if( /\.js$|\.map$/.test( file ) ) {
 		console.log( 'removing ', file );
-		fs.unlink('/var/www/html/playground/' + file, (file) => {
+		fs.unlink('/var/www/html/judgemy.org/' + file, (file) => {
 		});
 	}
 });
@@ -17,7 +17,7 @@ module.exports = {
 	context:	__dirname,
 	entry:		'./app.js',
 	output:		{
-		path:		'/var/www/html/playground/',
+		path:		'/var/www/html/judgemy.org/',
 		filename:	'[name]-bundle.js'
 	},
 	//devtool:	'source-map',
@@ -33,26 +33,27 @@ module.exports = {
 			{
 				test:		/\.css$/,
 				use: [
-					{ loader: 'style-loader/useable' },
-					{ loader: 'css-loader' }
+					{ loader:		'style-loader/useable' },
+					{ loader:		'css-loader' }
 				]
 			},
 			{
 				test:		/\.html$/,
 				use: [
-					{ loader: 'raw-loader' }
+					{ loader:		'raw-loader' }
 				]
 			},
 			{
 				test:		/\.htmlx$/,
 				use: [
-					{ loader: 'template-string-loader' }
+					{ loader:		'babel-loader' },
+					{ loader:		'template-string-loader' }
 				]
 			},
 			{
 				test:		/\.jpg$|.png$/,
 				use: [
-					{ loader: 'url-loader' }
+					{ loader:		'url-loader' }
 				]
 			}
 		]

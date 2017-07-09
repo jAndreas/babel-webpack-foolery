@@ -1,6 +1,9 @@
 'use strict';
 
 import http from 'http';
+import fs from 'fs';
+
+const logfile = fs.createWriteStream(__dirname + '/status.log', {flags: 'a'});
 
 http.createServer( (req, res) => {
   let file = req.url.replace( '/public/', '' ),
@@ -25,10 +28,17 @@ http.createServer( (req, res) => {
     }
   };
   
-  console.log('request to: ', file, ' - type: ', type, ' mime: ', mime[type].name, ' path: ', mime[ type ].path);
+  if( typeof mime[ type ] === 'undefined' ) {
+    mime[ type ] = {
+      name:	'application/octet-stream',
+      path:	'/secret_data/'
+    };
+  }
+  
+  logfile.write('request to: ' + file + ' - type: ' + type + ' - mime: ' + mime[type].name + ' - path: ' + mime[ type ].path + '\n');
   
   res.setHeader( 'X-Accel-Redirect', mime[ type ].path + file );
-  res.writeHead(200, { 'Content-Type': mime[ type ].name });
+  res.writeHead( 200, { 'Content-Type': mime[ type ].name } );
   res.end();
 }).listen( 2228 );
 
