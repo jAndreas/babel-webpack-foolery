@@ -4,23 +4,21 @@
   "description": "Kickoff test",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --watch --progress --config webpack.dev",
+    "dev": "webpack --mode development --watch --progress --config webpack.dev",
     "prod": "webpack --config webpack.prod"
   },
   "author": "Andreas Goebel",
   "license": "MIT",
   "devDependencies": {
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "babel-plugin-transform-regenerator": "^6.24.1",
-    "babel-plugin-transform-runtime": "^6.23.0",
     "eslint": "^4.0.0",
     "eslint-loader": "^1.9.0",
-    "file-loader": "^0.11.2",
+    "file-loader": "^6.2.0",
     "loader-utils": "^1.1.0",
     "uglify-es": "^3.0.24",
     "uglify-js": "^3.0.24",
     "uglifyjs-webpack-plugin": "^0.4.6",
-    "webpack": "^3.1.0",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
     "webpack-dev-server": "^2.5.1",
     "webpack-sources": "^1.0.1"
   },
@@ -37,10 +35,12 @@
     "hls.js": "^0.7.10",
     "node-libs-browser": "^2.0.0",
     "raw-loader": "^0.5.1",
+    "sass": "^1.46.0",
+    "sass-loader": "^12.4.0",
     "socket.io": "^2.0.3",
-    "style-loader": "^0.18.2",
+    "style-loader": "^3.3.1",
     "template-string-loader": "0.0.3",
-    "url-loader": "^0.5.8"
+    "url-loader": "^0.5.9"
   },
   "eslintConfig": {
     "parser": "babel-eslint",

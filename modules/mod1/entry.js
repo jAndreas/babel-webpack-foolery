@@ -6,7 +6,7 @@ import { win, doc } from 'barfoos2.0/domkit.js';
 import { moduleLocations } from 'barfoos2.0/defs.js';
 //import io from 'socket.io-client';
 import htmlx from './markup.htmlx';
-import style from './style.css';
+import style from './style.scss';
 
 /*var socket = io( 'http://judgemy.org' );
 

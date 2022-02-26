@@ -19,3 +19,11 @@ setTimeout(function() {
 		console.log('ERR: ', err);
 	});
 }, 2000);
+
+setTimeout(function() {
+        import( /* webpackChunkName: "Ext1" */ 'https://apis.google.com/js/api.js' ).then( MOD2 => {
+                console.log('hmmm, external js file was imported? ', MOD2);
+        }).catch( err => {
+                console.log('ERR: ', err);
+        });
+}, 3000);
