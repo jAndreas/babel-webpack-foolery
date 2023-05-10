@@ -1,5 +1,16 @@
-const crypto = require('crypto');
+'use strict';
 
-let rnd = crypto.randomBytes(16).toString('hex');
+let data = [ 'Super', 'Rofl', 'Bitcoin', 'Robert', 'Jesus', 'World', 'Better', 'truth' ];
 
-console.log('random bytes:\n', rnd);
+function start() {
+    let item = data.shift();
+
+    process.stdout.write( '                                                                                                 \r' );
+	process.stdout.write( `· mailservice sendMail() response for ${ item }\r` );
+
+    if( data.length ) {
+        setTimeout( start, 500 );
+    }
+} 
+
+start();
