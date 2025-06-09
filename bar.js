@@ -1,9 +1,23 @@
 'use strict';
 
+const { WebcastPushConnection } = require( 'tiktok-live-connector' );
 
-let txt = ":roflcopter loool und :bar";
+let uname = 'sick1.0.0';
+let conn  = new WebcastPushConnection( uname );
 
-txt.replace(/:.*\s+/g, match => {
-    match = match.trim();
-    console.log(match.slice(1));
-});
+(async function() {
+	try {
+		let res = await conn.connect();
+		console.log( 'Connected. room id: ', res.roomId );
+		console.log( res );
+
+		conn.on( 'gift', data => {
+			console.log( 'NEW GIFT:\n', data );
+		});
+	} catch( ex ) {
+		console.log( 'error: ', ex );
+	}
+	
+}());
+
+
